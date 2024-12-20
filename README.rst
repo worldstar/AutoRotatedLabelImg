@@ -83,8 +83,8 @@ XML 格式
     </annotation>
 
 
-
-Installation
+安裝
+.. Installation
 ------------------
 
 Download prebuilt binaries of original 'labelImg'
@@ -94,7 +94,8 @@ Download prebuilt binaries of original 'labelImg'
 
 -  OS X. Binaries for OS X are not yet available. Help would be appreciated. At present, it must be `built from source <#os-x>`__.
 
-Build from source
+從源碼構建
+.. Build from source
 ~~~~~~~~~~~~~~~~~
 
 Linux/Ubuntu/Mac requires at least `Python
@@ -132,6 +133,7 @@ later <https://www.python.org/downloads/windows/>`__,
 `PyQt4 <https://www.riverbankcomputing.com/software/pyqt/download>`__
 and `install lxml <http://lxml.de/installation.html>`__.
 
+打開命令行並進入 'roLabelImg <#roLabelimg>'__ 目錄
 Open cmd and go to `roLabelImg <#roLabelimg>`__ directory
 
 .. code::
