@@ -7,7 +7,7 @@ RotatedAutoLabelImg
 .. image:: https://img.shields.io/travis/tzutalin/labelImg.svg
         :target: https://travis-ci.org/tzutalin/labelImg
 
-RotatedAutoLabelImg 是一款圖形化的圖像標註工具，可以標註旋轉矩形區域及自動識別標註，是基於原始版本「roLabelImg」的重寫版本。
+RotatedAutoLabelImg 是一款圖形化的圖像自動化標註工具，可以自動識別並標註，是基於原始版本「roLabelImg」的重寫版本，並且加上了YOLOv8 obb。
 
 原始版本「roLabelImg」的鏈接在這裡：https://github.com/cgvict/roLabelImg。
 
@@ -173,13 +173,32 @@ Use Docker
 步驟
 ~~~~~
 
-1. Build and launch using the instructions above.
-2. Click 'Change default saved annotation folder' in Menu/File
-3. Click 'Open Dir'
-4. Click 'Create RectBox'
-5. Click and release left mouse to select a region to annotate the rect
+自動標註
+++++
+
+1. 按照上述指示建置並啟動。
+2. 在選單「檔案」中點擊 「更改預設儲存標註資料夾」。
+3. 點擊 「標註並下一張」或「標註這張」或「自動標註」。
+4. 等待生成。
+5. 您可以使用左鍵移動，右鍵旋轉矩形框或複製它。
+
+手動標註
+++++
+
+1. 按照上述指示建置並啟動。
+2. 在選單「檔案」中點擊 「更改預設儲存標註資料夾」。
+3. 點擊 「開啟資料夾」。
+4. 點擊 「建立矩形框」。
+5. 按下並釋放左鍵，選取要標註的矩形區域。
+6. 您可以使用右鍵拖動矩形框來複製或移動它。
+
+.. 1. Build and launch using the instructions above.
+.. 2. Click 'Change default saved annotation folder' in Menu/File
+.. 3. Click 'Open Dir'
+.. 4. Click 'Create RectBox'
+.. 5. Click and release left mouse to select a region to annotate the rect
    box
-6. You can use right mouse to drag the rect box to copy or move it
+.. 6. You can use right mouse to drag the rect box to copy or move it
 
 The annotation will be saved to the folder you specify.
 
