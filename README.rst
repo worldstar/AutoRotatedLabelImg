@@ -84,6 +84,7 @@ XML 格式
 
 
 安裝
+
 .. Installation
 ------------------
 
@@ -95,6 +96,7 @@ Download prebuilt binaries of original 'labelImg'
 -  OS X. Binaries for OS X are not yet available. Help would be appreciated. At present, it must be `built from source <#os-x>`__.
 
 從源碼構建
+
 .. Build from source
 ~~~~~~~~~~~~~~~~~
 
@@ -134,7 +136,8 @@ later <https://www.python.org/downloads/windows/>`__,
 and `install lxml <http://lxml.de/installation.html>`__.
 
 打開命令行並進入 'roLabelImg <#roLabelimg>'__ 目錄
-Open cmd and go to `roLabelImg <#roLabelimg>`__ directory
+
+.. Open cmd and go to `roLabelImg <#roLabelimg>`__ directory
 
 .. code::
 
@@ -160,12 +163,14 @@ Use Docker
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     tzutalin/py2qt4
 
-You can pull the image which has all of the installed and required dependencies.  
+您可以提取包含所有已安裝和所需相依套件的圖片檔。
 
-Usage
+.. You can pull the image which has all of the installed and required dependencies.  
+
+使用方法
 -----
 
-Steps
+步驟
 ~~~~~
 
 1. Build and launch using the instructions above.
