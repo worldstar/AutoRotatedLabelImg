@@ -7,9 +7,11 @@ RotatedAutoLabelImg
 .. image:: https://img.shields.io/travis/tzutalin/labelImg.svg
         :target: https://travis-ci.org/tzutalin/labelImg
 
-RotatedAutoLabelImg 是一款圖形化的圖像自動化標註工具，可以自動識別並標註，是基於原始版本「roLabelImg」的重寫版本，並且加上了YOLOv8 obb。
+RotatedAutoLabelImg 是一款圖形化的圖像自動化標註工具，可以自動識別並標註，是基於原始版本「roLabelImg」的重寫版本，並且加上了YOLOv8 OBB。
 
 原始版本「roLabelImg」的鏈接在這裡：https://github.com/cgvict/roLabelImg。
+
+「YOLOv8 OBB」的連結在這裡 : https://github.com/orgs/ultralytics/discussions/7472。
 
 它使用 Python 編寫，並採用了 Qt 作為其圖形界面框架。
 
@@ -20,6 +22,16 @@ RotatedAutoLabelImg 是一款圖形化的圖像自動化標註工具，可以自
 .. It is written in Python and uses Qt for its graphical interface.
 
 `接下來請看範例`
+
+自動標註有3種功能
+
++------------+--------------------------------------------+
+| 標註並下一張   | 自動標註當前圖片後切換至下一張圖片         |
++------------+--------------------------------------------+
+| 標註這張      | 將當前圖片進行自動標註                     |
++------------+--------------------------------------------+
+| 自動標註      | 將當前資料夾裡的所有圖片全部自動標註        |
++------------+--------------------------------------------+
 
 .. `Watch a demo by author cgvict`
 
