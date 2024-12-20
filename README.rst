@@ -30,10 +30,12 @@ RotatedAutoLabelImg 是一款圖形化的圖像標註工具，可以標註旋轉
 
 https://youtu.be/7D5lvol_QRA
 
-Annotations are saved as XML files almost like PASCAL VOC format, the format used by `ImageNet <http://www.image-net.org/>`__.
+註釋會被保存為 XML 文件，格式類似於 PASCAL VOC 格式，這是 ImageNet <http://www.image-net.org/>__ 使用的格式。
+
+.. Annotations are saved as XML files almost like PASCAL VOC format, the format used by `ImageNet <http://www.image-net.org/>`__.
 
 
-XML Format
+XML 格式
 ------------------
 
 .. code::
