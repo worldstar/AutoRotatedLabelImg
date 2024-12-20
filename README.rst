@@ -15,7 +15,7 @@ It is written in Python and uses Qt for its graphical interface.
 
 `Watch a demo by author cgvict`
 
-.. image:: https://raw.githubusercontent.com/cgvict/roLabelImg/master/demo/demo4.png
+.. image:: https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo1.png
      :alt: Demo Image
 
 .. image:: https://raw.githubusercontent.com/cgvict/roLabelImg/master/demo/demo_v2.5.gif
