@@ -7,11 +7,17 @@ roLabelImg
 .. image:: https://img.shields.io/travis/tzutalin/labelImg.svg
         :target: https://travis-ci.org/tzutalin/labelImg
 
-roLabelImg is a graphical image annotation tool can label ROTATED rectangle regions, which is rewrite from 'labelImg'.
+RotatedAutoLabelImg 是一款圖形化的圖像標註工具，可以標註旋轉矩形區域及自動識別標註，是基於原始版本「roLabelImg」的重寫版本。
 
-The original version 'labelImg''s link is here<https://github.com/tzutalin/labelImg>.
+原始版本「roLabelImg」的鏈接在這裡：https://github.com/cgvict/roLabelImg。
 
-It is written in Python and uses Qt for its graphical interface.
+它使用 Python 編寫，並採用了 Qt 作為其圖形界面框架。
+
+.. roLabelImg is a graphical image annotation tool can label ROTATED rectangle regions, which is rewrite from 'labelImg'.
+
+.. The original version 'labelImg''s link is here<https://github.com/tzutalin/labelImg>.
+
+.. It is written in Python and uses Qt for its graphical interface.
 
 `Watch a demo by author cgvict`
 
