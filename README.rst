@@ -19,7 +19,9 @@ RotatedAutoLabelImg 是一款圖形化的圖像標註工具，可以標註旋轉
 
 .. It is written in Python and uses Qt for its graphical interface.
 
-`Watch a demo by author cgvict`
+`接下來請看範例`
+
+.. `Watch a demo by author cgvict`
 
 .. image:: https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo1.png
      :alt: Demo Image
