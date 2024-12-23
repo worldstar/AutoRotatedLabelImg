@@ -1,9 +1,5 @@
 # RotatedAutoLabelImg
 
-![PyPI 版本](https://img.shields.io/pypi/v/labelimg.svg)[LabelImg on PyPI](https://pypi.python.org/pypi/labelimg)
-
-![Travis CI](https://img.shields.io/travis/tzutalin/labelImg.svg)[LabelImg on Travis CI](https://travis-ci.org/tzutalin/labelImg)
-
 RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB。
 
 原始版本 "roLabelImg" 可以在[這裡](https://github.com/cgvict/roLabelImg)找到。
