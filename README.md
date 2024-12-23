@@ -20,7 +20,7 @@ RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註
 
 ### 演示
 
-![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo1.png)
+![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo2.png)
 
 ![演示 GIF](https://raw.githubusercontent.com/cgvict/roLabelImg/master/demo/demo_v2.5.gif)
 
