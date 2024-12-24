@@ -132,6 +132,69 @@ docker run -it \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
 tzutalin/py2qt4
 ```
+### 權重檔案安裝
+
+#### Roboflow
+
+將已框好的訓練集上傳到[Roboflow](https://app.roboflow.com/)
+
+#### YOLOv8 OBB訓練
+
+點擊[這裡](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-obb.ipynb)打開網站 依序點擊執行
+
+
+看到下方這串程式碼
+```python
+!mkdir -p {HOME}/datasets
+%cd {HOME}/datasets
+
+!pip install roboflow --quiet
+
+import roboflow
+
+roboflow.login()
+
+rf = roboflow.Roboflow()
+
+project = rf.workspace("model-examples").project("aerial-solar-panels-obb")
+dataset = project.version(1).download("yolov8-obb")
+```
+
+打開上傳到roboflow的資料集
+
+![範例圖](linkhttps://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example1.png)
+
+點擊右上角`Download Dataset`
+
+![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example2.png)
+
+選擇`YOLOv8 Oriented Bounding Boxes`按下`Continue`
+
+![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example3.png)
+
+將出現的程式碼複製貼上並執行
+```python
+!mkdir -p {HOME}/datasets
+%cd {HOME}/datasets
+
+!pip install roboflow --quiet #從這行覆蓋到
+
+import roboflow
+
+roboflow.login()
+
+rf = roboflow.Roboflow()
+
+project = rf.workspace("model-examples").project("aerial-solar-panels-obb")
+dataset = project.version(1).download("yolov8-obb") #這裡
+```
+
+將網站的程式碼依序執行完後
+找到資料夾位置
+`/content/datasets/runs/obb/train/weights`
+將裡面的`best.pt`檔案下載
+並丟到"RotatedAutoLabelImg"的資料夾內取代原本的檔案
+
 
 ### 使用方法
 
