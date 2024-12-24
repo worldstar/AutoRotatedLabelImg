@@ -240,10 +240,6 @@ dataset = project.version(1).download("yolov8-obb") #這裡
 | ↑→↓←       | 使用鍵盤箭頭移動選中的矩形框               |
 | zxcv         | 使用鍵盤旋轉選中的矩形框                  |
 
-### 如何貢獻
-
-提交拉取請求。
-
 ### 授權
 
 [MIT 授權](https://github.com/cgvict/roLabelImg/blob/master/LICENSE)
