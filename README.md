@@ -162,7 +162,7 @@ dataset = project.version(1).download("yolov8-obb")
 
 打開上傳到roboflow的資料集
 
-![範例圖](linkhttps://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example1.png)
+![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example1.png)
 
 點擊右上角`Download Dataset`
 
