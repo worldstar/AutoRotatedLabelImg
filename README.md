@@ -1,5 +1,6 @@
 # RotatedAutoLabelImg
 
+
 RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB。
 
 原始版本 "roLabelImg" 可以在[這裡](https://github.com/cgvict/roLabelImg)找到。
@@ -20,7 +21,7 @@ RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註
 
 ### 演示
 
-![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo2.png)
+![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo1.png)
 
 ![演示 GIF](https://raw.githubusercontent.com/cgvict/roLabelImg/master/demo/demo_v2.5.gif)
 
@@ -132,6 +133,7 @@ docker run -it \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
 tzutalin/py2qt4
 ```
+
 ### 權重檔案安裝
 
 #### Roboflow
@@ -144,6 +146,7 @@ tzutalin/py2qt4
 
 
 看到下方這串程式碼
+打開上傳到roboflow的資料集
 ```python
 !mkdir -p {HOME}/datasets
 %cd {HOME}/datasets
@@ -160,19 +163,20 @@ project = rf.workspace("model-examples").project("aerial-solar-panels-obb")
 dataset = project.version(1).download("yolov8-obb")
 ```
 
-打開上傳到roboflow的資料集
-
-![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example1.png)
-
 點擊右上角`Download Dataset`
 
-![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example2.png)
+![範例圖](linkhttps://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example1.png)
 
 選擇`YOLOv8 Oriented Bounding Boxes`按下`Continue`
 
+![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example2.png)
+
+將出現的程式碼複製
+
 ![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example3.png)
 
-將出現的程式碼複製貼上並執行
+貼回到原本的程式碼並執行
+
 ```python
 !mkdir -p {HOME}/datasets
 %cd {HOME}/datasets
@@ -194,6 +198,7 @@ dataset = project.version(1).download("yolov8-obb") #這裡
 `/content/datasets/runs/obb/train/weights`
 將裡面的`best.pt`檔案下載
 並丟到"RotatedAutoLabelImg"的資料夾內取代原本的檔案
+
 
 
 ### 使用方法
@@ -239,10 +244,6 @@ dataset = project.version(1).download("yolov8-obb") #這裡
 | Ctrl--       | 縮小                                      |
 | ↑→↓←       | 使用鍵盤箭頭移動選中的矩形框               |
 | zxcv         | 使用鍵盤旋轉選中的矩形框                  |
-
-### 授權
-
-[MIT 授權](https://github.com/cgvict/roLabelImg/blob/master/LICENSE)
 
 ### 相關
 
