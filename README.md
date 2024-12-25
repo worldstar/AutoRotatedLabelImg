@@ -1,7 +1,7 @@
 # RotatedAutoLabelImg
 
 
-RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB。
+RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註，也能匯出YOLOv8 OBB訓練的格式。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB。
 
 原始版本 "roLabelImg" 可以在[這裡](https://github.com/cgvict/roLabelImg)找到。
 
@@ -21,11 +21,7 @@ RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註
 
 ### 演示
 
-![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo1.png)
-
-![演示 GIF](https://raw.githubusercontent.com/cgvict/roLabelImg/master/demo/demo_v2.5.gif)
-
-[觀看 YouTube 上的演示](https://youtu.be/7D5lvol_QRA)
+![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo2.png)
 
 標註將以 XML 文件格式保存，類似於 [ImageNet](http://www.image-net.org/) 使用的 PASCAL VOC 格式。
 
@@ -165,7 +161,7 @@ dataset = project.version(1).download("yolov8-obb")
 
 點擊右上角`Download Dataset`
 
-![範例圖](linkhttps://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example1.png)
+![範例圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/example3.png)
 
 選擇`YOLOv8 Oriented Bounding Boxes`按下`Continue`
 
@@ -197,9 +193,7 @@ dataset = project.version(1).download("yolov8-obb") #這裡
 找到資料夾位置
 `/content/datasets/runs/obb/train/weights`
 將裡面的`best.pt`檔案下載
-並丟到"RotatedAutoLabelImg"的資料夾內取代原本的檔案
-
-
+並將"RotatedAutoLabelImg"資料夾根目錄內的`best.pt`檔案取代
 
 ### 使用方法
 
