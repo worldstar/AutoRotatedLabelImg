@@ -77,7 +77,7 @@ class Make_xml:
     @staticmethod
     def summon_xml(temp_filepath):
         # 加載 YOLO 模型
-        model = YOLO('yolov8n-obb.pt')
+        model = YOLO('best.pt')
         filepath = os.path.abspath(temp_filepath)
 
         # 預測圖片
