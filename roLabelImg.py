@@ -1206,6 +1206,7 @@ class MainWindow(QMainWindow, WindowMixin):
         filters = "圖片及標註檔 (%s)" % ' '.join(formats + ['*%s' % LabelFile.suffix])
         filename = QFileDialog.getOpenFileName(self, '%s - 選擇影像或標註檔' % __appname__, path, filters)
         if filename:
+            self.fileListWidget.clear()
             if isinstance(filename, (tuple, list)):
                 filename = filename[0]
             self.loadFile(filename)
