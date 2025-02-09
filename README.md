@@ -1,7 +1,7 @@
 # RotatedAutoLabelImg
 
 
-RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註，也能匯出YOLOv8 OBB訓練的格式。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB。
+RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註，也能匯出YOLOv8 OBB訓練的格式。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB和Ollama實現在自動辨識的同時導入語言模型自動判別是否有肺高壓之可能並匯出辨別依據和可能的機率。
 
 原始版本 "roLabelImg" 可以在[這裡](https://github.com/cgvict/roLabelImg)找到。
 
