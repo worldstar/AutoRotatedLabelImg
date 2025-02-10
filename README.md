@@ -22,6 +22,7 @@ RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註
 ### 演示
 
 ![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo5.png)
+![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo4.gif)
 <video src="https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo4.mp4" autoplay loop muted playsinline width="500"></video>
 
 標註將以 XML 文件格式保存，類似於 [ImageNet](http://www.image-net.org/) 使用的 PASCAL VOC 格式。
