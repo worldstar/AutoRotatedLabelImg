@@ -6,6 +6,8 @@ import re
 import sys
 import subprocess
 import shutil
+import xml.etree.ElementTree as ET
+import ollama
 
 from functools import partial
 from collections import defaultdict
@@ -14,6 +16,7 @@ try:
     from PyQt5.QtGui import *
     from PyQt5.QtCore import *
     from PyQt5.QtWidgets import *
+    from PyQt5 import QtWidgets
 except ImportError:
     # needed for py3+qt4
     # Ref:
@@ -75,6 +78,21 @@ class WindowMixin(object):
         self.addToolBar(Qt.LeftToolBarArea, toolbar)
         return toolbar
 
+class customlog(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        btn = QPushButton("按鈕",self)
+        btn.clicked.connect(self.btnClicked)
+
+    def btnClicked(self):
+       msg = QMessageBox(self)
+       msg.setWindowTitle("對話框")   #設定文字
+       msg.setText("我是訊息")        #設定顯示訊息
+       msg.setIcon(QMessageBox.Warning)
+       msg.setStandardButtons(QMessageBox.Ok|QMessageBox.No)
+       msg.exec()    
+
 
 # PyQt5: TypeError: unhashable type: 'QListWidgetItem'
 class HashableQListWidgetItem(QListWidgetItem):
@@ -100,6 +118,7 @@ class MainWindow(QMainWindow, WindowMixin):
         self.dirname = None
         self.labelHist = []
         self.lastOpenDir = None
+        
 
         # Whether we need to save or not.
         self.dirty = False
@@ -124,7 +143,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
         listLayout = QVBoxLayout()
         listLayout.setContentsMargins(0, 0, 0, 0)
-        
+
         # Create a widget for using default label
         self.useDefautLabelCheckbox = QCheckBox(u'使用預設標籤')
         self.useDefautLabelCheckbox.setChecked(False)
@@ -161,6 +180,8 @@ class MainWindow(QMainWindow, WindowMixin):
         self.dock = QDockWidget(u'標註框', self)
         self.dock.setObjectName(u'標註')
         self.dock.setWidget(labelListContainer)
+        
+        # "testing" label size
 
         # Tzutalin 20160906 : Add file list and dock to move faster
         self.fileListWidget = QListWidget()
@@ -232,9 +253,16 @@ class MainWindow(QMainWindow, WindowMixin):
         label = action('&標註這張', self.labelthis,
                        '', 'labelthis', u'標註現在這張')
         label.setIcon(QIcon(r"icons\auto.png"))
-        
+    
+        heartinfo = action('&心臟資料', self.showheartinfo,
+                            '', 'showheartinfo', u'顯示心臟相關資料')
+
+        test = action('', self.testfuntion,
+                            '', 'test', u'測試')
+
         NextAndLabel = action('&標註並下一張', self.NextAndLabel,
                               '', 'nextlabel', u'標註然後下一張')
+        NextAndLabel.setIcon(QIcon(r"icons\nextlabel.png"))
 
         openPrevImg = action('&上一張圖片', self.openPrevImg,
                              'a', 'prev', u'打開上一個')
@@ -392,7 +420,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
         self.tools = self.toolbar('Tools')
         self.actions.beginner = (
-            open, opendir, openPrevImg, openNextImg, None, NextAndLabel, label, AutoLabel, None, verify, save, None, create, createRo, copy, delete, None,
+            opendir, openPrevImg, openNextImg, None, label, AutoLabel, heartinfo, test, verify, save, None, create, createRo, copy, delete, None,
             zoomIn, zoom, zoomOut, fitWindow, fitWidth)
 
         self.actions.advanced = (
@@ -1206,7 +1234,7 @@ class MainWindow(QMainWindow, WindowMixin):
         filters = "圖片及標註檔 (%s)" % ' '.join(formats + ['*%s' % LabelFile.suffix])
         filename = QFileDialog.getOpenFileName(self, '%s - 選擇影像或標註檔' % __appname__, path, filters)
         if filename:
-            self.fileListWidget.clear()
+            # self.fileListWidget.clear()
             if isinstance(filename, (tuple, list)):
                 filename = filename[0]
             self.loadFile(filename)
@@ -1225,6 +1253,19 @@ class MainWindow(QMainWindow, WindowMixin):
             savedPath = os.path.join(imgFileDir, savedFileName)
             self._saveFile(savedPath if self.labelFile
                            else self.saveFileDialog())
+
+    def showheartinfo(self):
+        file_path=os.path.splitext(self.filePath)[0] + ".xml"
+        print(file_path)
+        if os.path.exists(file_path):
+            result = self.xml_area(file_path)
+            self.heartinfo(*result[:3])
+        else:
+            print("not found")
+
+    def testfuntion(self):
+        print("hello world!!!")
+        
 
     def saveFileAs(self, _value=False):
         assert not self.image.isNull(), "沒有圖片"
@@ -1270,6 +1311,45 @@ class MainWindow(QMainWindow, WindowMixin):
     def errorMessage(self, title, message):
         return QMessageBox.critical(self, title,
                                     '<p><b>%s</b></p>%s' % (title, message))
+
+    def heartinfo(self, size1, size2, size3):
+        dialog = QDialog(self)
+        dialog.setWindowTitle('心房心室大小')
+
+        # Set a custom size for the dialog
+        dialog.resize(400, 300)
+
+        # Create layout and add widgets
+        layout = QVBoxLayout()
+        if size1 == 0:
+            size1 = u"無"
+        else:
+            size1=size1*0.00016
+        if size2 == 0:
+            size2 = u"無"
+        else:
+            size2=size2*0.00016
+        if size3 == 0:
+            size3 = u"無"
+        else:
+            size3=size3*0.00016
+        msg = f'右心室 : {size1:.2f} \n右心房 : {size2:.2f} \n左心室 : {size3:.2f}\nollama正在分析... \n'
+        response = ollama.chat(
+            model = "mistral",
+            messages = [{"role":"user","content":f"請單純透過 右心室:{size1},右心房:{size2},左心房:{size3}來進行分析這個心臟的主人有沒有可能有肺高壓的症狀，請在回應的第一行回應:肺高壓機率: 機率請以百分比回答，換行後大概寫判斷的依據及分析 分析時每個句號都請換行一次"}]
+        )
+        msg += response['message']['content']
+        label = QLabel(msg)
+        layout.addWidget(label)
+ 
+        # Add an OK button
+        ok_button = QPushButton("OK")
+        ok_button.clicked.connect(dialog.accept)
+        layout.addWidget(ok_button)
+        
+        dialog.setLayout(layout)
+        dialog.exec()
+        
 
     def currentPath(self):
         return os.path.dirname(self.filePath) if self.filePath else '.'
@@ -1346,6 +1426,31 @@ class MainWindow(QMainWindow, WindowMixin):
         self.loadLabels(shapes)
         self.canvas.verified = tVocParseReader.verified
 
+    def xml_area(self, file_path):
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+
+        # 初始化 dimensions，确保 index 对应 name 的顺序
+        dimensions = [0, 0, 0]
+
+        for obj in root.findall("object"):
+            name_element = obj.find("name")
+            robndbox = obj.find("robndbox")
+
+            if name_element is not None and robndbox is not None:
+                try:
+                    name = int(name_element.text)  # 获取 name 的值并转换为整数
+                    w = float(robndbox.find("w").text)
+                    h = float(robndbox.find("h").text)
+
+                    area = w * h
+                    # 根据 name 值存储到 dimensions 的对应位置
+                    if 0 <= name < len(dimensions):
+                        dimensions[name] = area
+                except (ValueError, IndexError):
+                    print(f"Invalid name or dimensions for object: {ET.tostring(obj, encoding='unicode')}")
+
+        return dimensions
 
 class Settings(object):
     """Convenience dict-like wrapper around QSettings."""
