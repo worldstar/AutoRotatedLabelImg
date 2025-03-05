@@ -1,7 +1,10 @@
 # RotatedAutoLabelImg
 
 
-RotatedAutoLabelImg 是一款圖形化的圖像標註工具，能自動化標註，也能匯出YOLOv8 OBB訓練的格式。這是 "roLabelImg" 的重寫版本，並且加入了 YOLOv8 OBB和Ollama實現在自動辨識的同時導入語言模型自動判別是否有肺高壓之可能並匯出辨別依據和可能的機率。
+肺高壓 (Pulmonary Hypertension, PH) 是一種影響肺部與心臟的嚴重疾病，因為肺動脈壓力過高，所以心臟必須更努力的工作，才能將血液送到全身，當肺動脈的壓力越來越高，心臟負荷就會越來越沉重，最後造成右心室肥大、衰竭，甚至死亡 。 
+
+因此，基於醫學影像的電腦輔助診斷 (CAD) 技術，成為近年來研究的重點，希望透過人工智慧提升肺高壓的診斷率。 在影像處理技術方面，YOLO (You Only Look Once) 是目前最受關注的深度學習物件偵測模型之一。YOLOv8-OBB 提供了旋轉邊界框 (Oriented Bounding Box, OBB)，能夠更精準地標註區域，對於心臟與肺部結構分析具有潛在優勢。 
+本研究旨在結合 YOLOv8-OBB 與 LabelImg，建立一個輔助肺高壓診斷的工具，期望透過該程式提高診斷效率，降低醫生判讀影像的負擔，並提升患者的診斷率。
 
 原始版本 "roLabelImg" 可以在[這裡](https://github.com/cgvict/roLabelImg)找到。
 
