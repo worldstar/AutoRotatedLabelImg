@@ -24,8 +24,8 @@
 
 ### 演示
 
-![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo5.png)
-![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo4.gif)
+![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/demo.mp4)
+![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/Ollama_use.mp4)
 <video src="https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/redemo4.mp4" autoplay loop muted playsinline width="500"></video>
 
 標註將以 XML 文件格式保存，類似於 [ImageNet](http://www.image-net.org/) 使用的 PASCAL VOC 格式。
