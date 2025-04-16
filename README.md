@@ -23,9 +23,9 @@
 | 自動標註       | 自動標註資料夾內所有圖片                  |
 
 ### 演示
-##標註展示
+## 標註展示
 ![演示圖](https://github.com/worldstar/RotatedAutoLabelImg/blob/master/demo/demo.gif)
-##Ollama的使用
+## Ollama的使用
 ![演示圖](https://github.com/worldstar/AutoRotatedLabelImg/blob/master/demo/Ollama_use.gif)
 
 標註將以 XML 文件格式保存，類似於 [ImageNet](http://www.image-net.org/) 使用的 PASCAL VOC 格式。
