@@ -81,9 +81,8 @@ class Make_xml:
         filepath = os.path.abspath(temp_filepath)
 
         # 預測圖片
-        results = model.predict(source=filepath, save=False)
+        results = model.predict(source=filepath, save=False, conf=0.369)
         result = results[0]
-        
         # 檢查是否有旋轉框數據
         if result.obb and result.obb.xywhr is not None:
             # 獲取圖像大小
@@ -112,5 +111,3 @@ class Make_xml:
                 f.write(xml_content)
         else:
             print(f"跳過圖片 {filepath}：未檢測到旋轉框數據！")
-
-        print("所有圖片的 XML 文件生成完成！")

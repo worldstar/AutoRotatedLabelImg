@@ -133,7 +133,7 @@ class Canvas(QWidget):
                 self.line.line_color = color
                 self.repaint()
                 self.current.highlightClear()
-                self.status.emit("width is %d, height is %d." % (pos.x()-self.line[0].x(), pos.y()-self.line[0].y()))
+                self.status.emit("寬度 %d, 長度 %d." % (pos.x()-self.line[0].x(), pos.y()-self.line[0].y()))
             return
 
         # Polygon copy moving.
@@ -178,7 +178,7 @@ class Canvas(QWidget):
         # - Highlight shapes
         # - Highlight vertex
         # Update shape/vertex fill and tooltip value accordingly.
-        self.setToolTip("Image")
+        self.setToolTip("圖片")
         for shape in reversed([s for s in self.shapes if self.isVisible(s)]):
             # Look for a nearby vertex to highlight. If that fails,
             # check if we happen to be inside a shape.
