@@ -254,8 +254,9 @@ class MainWindow(QMainWindow, WindowMixin):
                        '', 'labelthis', u'標註現在這張')
         label.setIcon(QIcon(r"icons\auto.png"))
     
-        heartinfo = action('&心臟資料', self.showheartinfo,
-                            '', 'showheartinfo', u'顯示心臟相關資料')
+        heartinfo = action('&心臟診斷', self.showheartinfo,
+                            '', 'showheartinfo', u'使用語言模型來幫你分析病情吧')
+        heartinfo.setIcon(QIcon(r"icons\ollama.png"))
 
         test = action('', self.testfuntion,
                             '', 'test', u'測試')
@@ -1225,6 +1226,7 @@ class MainWindow(QMainWindow, WindowMixin):
             item = QListWidgetItem(imgPath)
             self.fileListWidget.addItem(item)
         self.loadFile(self.mImgList[currIndex])
+        print("所有圖片的 XML 文件生成完成！")
 
     def openFile(self, _value=False):
         if not self.mayContinue():
@@ -1321,6 +1323,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
         # Create layout and add widgets
         layout = QVBoxLayout()
+        self.errorMessage(u'注意',u'<p>正在思考，按下確認後請勿關閉程式')
         if size1 == 0:
             size1 = u"無"
         else:
@@ -1333,10 +1336,10 @@ class MainWindow(QMainWindow, WindowMixin):
             size3 = u"無"
         else:
             size3=size3*0.00016
-        msg = f'右心室 : {size1:.2f} \n右心房 : {size2:.2f} \n左心室 : {size3:.2f}\nollama正在分析... \n'
+        msg = f'右心室 : {size1:.2f} \n右心房 : {size2:.2f} \n左心室 : {size3:.2f}\n'
         response = ollama.chat(
             model = "mistral",
-            messages = [{"role":"user","content":f"請單純透過 右心室:{size1},右心房:{size2},左心房:{size3}來進行分析這個心臟的主人有沒有可能有肺高壓的症狀，請在回應的第一行回應:肺高壓機率: 機率請以百分比回答，換行後大概寫判斷的依據及分析 分析時每個句號都請換行一次"}]
+            messages = [{"role":"user","content":f"你現在手裡只有 右心室:{size1}cm,右心房:{size2}cm,左心房:{size3}cm 這些資料來進行分析這個心臟的主人有沒有可能有肺高壓的症狀，病人立即就要一個答案且不接受不確定不明確的答案，請在回應的第一行回應:肺高壓機率: 機率請以百分比回答，換行後大概寫判斷的依據及分析 為了方便閱讀請再回答時每個句號都換行一次"}]
         )
         msg += response['message']['content']
         label = QLabel(msg)
@@ -1430,7 +1433,6 @@ class MainWindow(QMainWindow, WindowMixin):
         tree = ET.parse(file_path)
         root = tree.getroot()
 
-        # 初始化 dimensions，确保 index 对应 name 的顺序
         dimensions = [0, 0, 0]
 
         for obj in root.findall("object"):
@@ -1439,12 +1441,11 @@ class MainWindow(QMainWindow, WindowMixin):
 
             if name_element is not None and robndbox is not None:
                 try:
-                    name = int(name_element.text)  # 获取 name 的值并转换为整数
+                    name = int(name_element.text)
                     w = float(robndbox.find("w").text)
                     h = float(robndbox.find("h").text)
 
                     area = w * h
-                    # 根据 name 值存储到 dimensions 的对应位置
                     if 0 <= name < len(dimensions):
                         dimensions[name] = area
                 except (ValueError, IndexError):
